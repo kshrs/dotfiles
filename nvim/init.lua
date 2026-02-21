@@ -1,0 +1,1 @@
+/home/kishor/.config/nvim/init.lua
