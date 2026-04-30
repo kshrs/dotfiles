@@ -1,0 +1,1 @@
+/home/kishor/.emacs.d/init.el
