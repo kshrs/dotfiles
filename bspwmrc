@@ -3,6 +3,8 @@
 grep -x sxhkd > /dev/null || sxhkd &
 xsetroot -cursor_name left_ptr &
 
+emacs --daemon &pgrep -x emacs >/dev/null || emacs --daemon &
+
 killall polybar 2>/dev/null 
 polybar -c "/home/kishor/.config/polybar/config.ini" mybar &
 killall nm-applet 2>/dev/null

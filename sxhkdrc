@@ -8,7 +8,6 @@
 super + Return
 	alacritty
 
-
 # program launcher
 super + p 
 	dmenu_run
@@ -17,6 +16,9 @@ super + p
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# emacs
+super + e
+      emacsclient -c -a ""
 # browser
 super + w
 	brave
