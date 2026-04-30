@@ -1,1 +1,751 @@
-/home/kishor/.config/alacritty/alacritty.toml
+# Imports
+# Schema: `["<string>",]`
+general.import = []
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+#live_config_reload = true
+
+# Offer IPC using `alacritty msg` (unix only)
+#ipc_socket = true # (unix only)
+
+#######
+# ENV #
+#######
+
+# Custom scaling factor since my screen is a HiDPI one.
+[env]
+WINIT_X11_SCALE_FACTOR = "1.4"
+
+
+##########
+# WINDOW #
+##########
+
+[window]
+padding = { x = 10, y = 0 }
+dimensions = { columns = 0, lines = 0 }
+position = "None"
+
+# Spread additional padding evenly around the terminal content.
+dynamic_padding = true
+
+# Schema: `"Full" | "None" | "Transparent" | "Buttonless"`
+decorations = "Full" 
+
+opacity = 1.0
+blur = false
+title = "Alacritty"
+dynamic_title = true
+class = { instance = "Alacritty", general = "Alacritty" }
+
+# Schema: `"Dark" | "Light" | "None"`
+decorations_theme_variant = "Dark"
+
+# Schema: `true | false`
+resize_increments = false
+
+#############
+# SCROLLING #
+#############
+
+[scrolling]
+history = 10000
+
+# Scroll multiplier
+multiplier = 3
+
+########
+# FONT #
+########
+
+[font]
+# Font size is small since scaling factor does the job
+size = 11.25
+
+offset = { x = 0, y = 0 }
+builtin_box_drawing = true
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+
+##########
+# COLORS #
+##########
+
+[colors]
+
+### Theme: base16-dark colorscheme and it's awesome
+
+primary.foreground = "#d8d8d8"
+primary.background = "#181818"
+
+# primary.dim_foreground = "#828482"
+# primary.bright_foreground = "None"
+
+cursor = { text = "CellBackground", cursor = "CellForeground" }
+
+vi_mode_cursor = { text = "CellBackground", cursor = "CellForeground" }
+
+transparent_background_colors = false
+
+# When true, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = false
+
+# Color used for the indicator displaying the position in history during search and vi mode.
+#
+# Setting this to "None" will use the opposing primary color.
+#
+# Default: { foreground = "None", background = "None" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+line_indicator = { foreground = "None", background = "None" }
+
+# Color used for the footer bar on the bottom, used by search regex input, hyperlink URI preview, etc.
+#
+# Default: { foreground = "#181818", background = "#d8d8d8" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+footer_bar = { foreground = "#181818", background = "#d8d8d8" }
+
+# Colors used for drawing selections.
+#
+# Allowed values are hexadecimal colors like #ff00ff, or CellForeground/CellBackground, which references the affected cell.
+#
+# Default: { text = "CellBackground", background = "CellForeground" }
+#
+# Schema: `{ text = "<string>", background = "<string>" }`
+
+selection = { text = "CellBackground", background = "CellForeground" }
+
+[colors.search]
+
+# Default: { foreground = "#181818", background = "#ac4242" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+matches = { foreground = "#181818", background = "#ac4242" }
+
+# Default: { foreground = "#181818", background = "#f4bf75" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+focused_match = { foreground = "#181818", background = "#f4bf75" }
+
+# This section documents the [colors.hints] table of the configuration.
+
+[colors.hints]
+
+# First character in the hint label.
+#
+# Allowed values are hexadecimal colors like #ff00ff, or CellForeground/CellBackground, which references the affected cell.
+#
+# Default: { foreground = "#181818", background = "#f4bf75" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+start = { foreground = "#181818", background = "#f4bf75" }
+
+# All characters after the first one in the hint label.
+#
+# Allowed values are hexadecimal colors like #ff00ff, or CellForeground/CellBackground, which references the affected cell.
+#
+# Default: { foreground = "#181818", background = "#ac4242" }
+#
+# Schema: `{ foreground = "<string>", background = "<string>" }`
+
+end = { foreground = "#181818", background = "#ac4242" }
+
+# This section documents the [colors.normal] table of the configuration.
+
+[colors.normal]
+black = "#181818"
+red = "#ac4242"
+green = "#90a959"
+yellow = "#f4bf75"
+blue = "#6a9fb5"
+magenta = "#aa759f"
+cyan = "#75b5aa"
+white = "#d8d8d8"
+
+[colors.bright]
+black = "#6b6b6b"
+red = "#c55555"
+green = "#aac474"
+yellow = "#feca88"
+blue = "#82b8c8"
+magenta = "#c28cb8"
+cyan = "#93d3c3"
+white = "#f8f8f8"
+
+# If the dim colors are not set, they will be calculated automatically based on the normal colors.
+
+[colors.dim]
+black = "#0f0f0f"
+red = "#712b2b"
+green = "#5f6f3a"
+yellow = "#a17e4d"
+blue = "#456877"
+magenta = "#704d68"
+cyan = "#4d7770"
+white = "#8e8e8e"
+
+#######
+# BELL #
+########
+
+[bell]
+# Schema: `"Ease" | "EaseOut" | "EaseOutSine" | "EaseOutQuad" | "EaseOutCubic" | "EaseOutQuart" | "EaseOutQuint" | "EaseOutExpo" | "EaseOutCirc" | "Linear"`
+
+animation = "Linear"
+duration = 0
+
+color = "#ffffff"
+command = "None"
+
+#############
+# SELECTION #
+#############
+
+[selection]
+
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+save_to_clipboard = false
+
+#########
+# CURSOR #
+#########
+
+[cursor]
+
+style = { shape = "Block", blinking = "Off" }
+
+vi_mode_style = "None"
+
+blink_interval = 750
+
+blink_timeout = 5
+
+unfocused_hollow = true
+
+thickness = 0.15
+
+# Shape:
+#   "Block"
+#   "Underline"
+#   "Beam"
+#
+# Blinking:
+#   "Never"
+#     Prevent the cursor from ever blinking
+#   "Off"
+#     Disable blinking by default
+#   "On"
+#     Enable blinking by default
+#   "Always"
+#     Force the cursor to always blink
+
+###########
+# TERMINAL #
+###########
+
+# This section documents the [terminal] table of the configuration file.
+
+[terminal]
+
+# Controls the ability to write to the system clipboard with the OSC 52 escape sequence. While this escape sequence is useful to copy contents from the remote server, allowing any application to read from the clipboard can be easily abused while not providing significant benefits over explicitly pasting text.
+#
+# "Disabled"
+#   Disable writing to the system clipboard entirely.
+#
+# "OnlyCopy"
+#   Allow writing to the system clipboard from Alacritty only.
+#
+# "OnlyPaste"
+#   Allow reading from the system clipboard in Alacritty only.
+#
+# "CopyPaste"
+#   Allow writing to and reading from the system clipboard in Alacritty.
+#
+# Default: "OnlyCopy"
+#
+# Schema: `"Disabled" | "OnlyCopy" | "OnlyPaste" | "CopyPaste"`
+
+osc52 = "OnlyCopy"
+
+########
+# MOUSE #
+########
+
+# This section documents the [mouse] table of the configuration file.
+
+[mouse]
+
+hide_when_typing = true
+
+# See keyboard.bindings for full documentation on mods, mode, action, and chars.
+#
+# When an application running within Alacritty captures the mouse, the `Shift` modifier can be used to suppress mouse reporting. If no action is found for the event, actions for the event without the `Shift` modifier are triggered instead.
+#
+# mouse = "Middle" | "Left" | "Right" | "Back" | "Forward" | <integer>
+#   Mouse button which needs to be pressed to trigger this binding.
+#
+# action = <keyboard.bindings.action> | "ExpandSelection"
+#   "ExpandSelection"
+#     Expand the selection to the current mouse cursor location.
+#
+# Example:
+#   ```
+#   [mouse]
+#   bindings = [
+#     { mouse = "Right", mods = "Control", action = "Paste" },
+#   ]
+#   ```
+#
+# Schema: `[{ mouse = "<mouse>", mods = "<string>", mode = "<string>", action = "<action>" | "<chars>" },]`
+
+bindings = []
+
+########
+# HINTS #
+########
+
+# This section documents the [hints] table of the configuration file.
+#
+# Terminal hints can be used to find text or hyperlinks in the visible part of the terminal and pipe it to other applications.
+
+[hints]
+
+# Keys used for the hint labels.
+#
+# Default: "jfkdls;ahgurieowpq"
+#
+# Schema: `"<string>"`
+
+alphabet = "jfkdls;ahgurieowpq"
+
+# Array with all available hints.
+# Each hint must have at least one of regex or hyperlinks and either an action or a command.
+
+# Schema: `[{ regex = "<string>", hyperlinks = true | false, post_processing = true | false, persist = true | false, action = "Copy" | "Paste" | "Select" | "MoveViModeCursor", command = "<string>" | { program = "<string>", args = ["<string>",] }, binding = { key = "<string>", mods = "<string>", mode = "<string>" }, mouse = { mods = "<string>", enabled = true | false } },]`
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "U", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+############
+# KEYBOARD #
+############
+
+# This section documents the [keyboard] table of the configuration file.
+
+[keyboard]
+
+# To unset a default binding, you can use the action "ReceiveChar" to remove it or "None" to inhibit any action.
+#
+# Multiple keybindings can be triggered by a single key press and will be executed in the order they are defined in.
+#
+# key = "<string>"
+#   The regular keys like "A", "0", and "Я" can be mapped directly without any special syntax. Full list of named keys like "F1" and the syntax for dead keys can be found here:
+#     https://docs.rs/winit/latest/winit/keyboard/enum.NamedKey.html
+#     https://docs.rs/winit/latest/winit/keyboard/enum.Key.html#variant.Dead
+#
+#   Numpad keys are prefixed by "Numpad": "NumpadEnter" | "NumpadAdd" | "NumpadComma" | "NumpadDivide" | "NumpadEquals" | "NumpadSubtract" | "NumpadMultiply" | "Numpad[0-9]".
+#
+#   The key field also supports using scancodes, which are specified as a decimal number.
+#
+# mods = "Command" | "Control" | "Option" | "Super" | "Shift" | "Alt"
+#   Multiple modifiers can be combined using |, like this: "Control | Shift".
+#
+# mode = "AppCursor" | "AppKeypad" | "Search" | "Alt" | "Vi"
+#   This defines a terminal mode which must be active for this binding to have an effect.
+#
+#   Prepending ~ to a mode will require the mode to not be active for the binding to take effect.
+#
+#   Multiple modes can be combined using |, like this: "~Vi|Search".
+#
+# chars = "<string>"
+#   Writes the specified string to the terminal.
+#
+# action
+#   "ReceiveChar"
+#     Allow receiving char input.
+#
+#   "None"
+#     No action.
+#
+#   "Paste"
+#     Paste contents of system clipboard.
+#
+#   "Copy"
+#     Store current selection into clipboard.
+#
+#   "IncreaseFontSize"
+#     Increase font size.
+#
+#   "DecreaseFontSize"
+#     Decrease font size.
+#
+#   "ResetFontSize"
+#     Reset font size to the config value.
+#
+#   "ScrollPageUp"
+#     Scroll exactly one page up.
+#
+#   "ScrollPageDown"
+#     Scroll exactly one page down.
+#
+#   "ScrollHalfPageUp"
+#     Scroll half a page up.
+#
+#   "ScrollHalfPageDown"
+#     Scroll half a page down.
+#
+#   "ScrollLineUp"
+#     Scroll one line up.
+#
+#   "ScrollLineDown"
+#     Scroll one line down.
+#
+#   "ScrollToTop"
+#     Scroll all the way to the top.
+#
+#   "ScrollToBottom"
+#     Scroll all the way to the bottom.
+#
+#   "ClearHistory"
+#     Clear the display buffer(s) to remove history.
+#
+#   "Hide"
+#     Hide the Alacritty window.
+#
+#   "Minimize"
+#     Minimize the Alacritty window.
+#
+#   "Quit"
+#     Quit Alacritty.
+#
+#   "ClearLogNotice"
+#     Clear warning and error notices.
+#
+#   "SpawnNewInstance"
+#     Spawn a new instance of Alacritty.
+#
+#   "CreateNewWindow"
+#     Create a new Alacritty window.
+#
+#   "ToggleFullscreen"
+#     Toggle fullscreen.
+#
+#   "ToggleMaximized"
+#     Toggle maximized.
+#
+#   "ClearSelection"
+#     Clear active selection.
+#
+#   "ToggleViMode"
+#     Toggle vi mode.
+#
+#   "SearchForward"
+#     Start a forward buffer search.
+#
+#   "SearchBackward"
+#     Start a backward buffer search.
+#
+#   Vi mode actions:
+#
+#   "Up"
+#     Move up.
+#
+#   "Down"
+#     Move down.
+#
+#   "Left"
+#     Move left.
+#
+#   "Right"
+#     Move right.
+#
+#   "First"
+#     First column, or beginning of the line when already at the first column.
+#
+#   "Last"
+#     Last column, or beginning of the line when already at the last column.
+#
+#   "FirstOccupied"
+#     First non-empty cell in this terminal row, or first non-empty cell of the line when already at the first cell of the row.
+#
+#   "High"
+#     Move to top of screen.
+#
+#   "Middle"
+#     Move to center of screen.
+#
+#   "Low"
+#     Move to bottom of screen.
+#
+#   "SemanticLeft"
+#     Move to start of semantically separated word.
+#
+#   "SemanticRight"
+#     Move to start of next semantically separated word.
+#
+#   "SemanticLeftEnd"
+#     Move to end of previous semantically separated word.
+#
+#   "SemanticRightEnd"
+#     Move to end of semantically separated word.
+#
+#   "WordLeft"
+#     Move to start of whitespace separated word.
+#
+#   "WordRight"
+#     Move to start of next whitespace separated word.
+#
+#   "WordLeftEnd"
+#     Move to end of previous whitespace separated word.
+#
+#   "WordRightEnd"
+#     Move to end of whitespace separated word.
+#
+#   "Bracket"
+#     Move to opposing bracket.
+#
+#   "ToggleNormalSelection"
+#     Toggle normal vi selection.
+#
+#   "ToggleLineSelection"
+#     Toggle line vi selection.
+#
+#   "ToggleBlockSelection"
+#     Toggle block vi selection.
+#
+#   "ToggleSemanticSelection"
+#     Toggle semantic vi selection.
+#
+#   "SearchNext"
+#     Jump to the beginning of the next match.
+#
+#   "SearchPrevious"
+#     Jump to the beginning of the previous match.
+#
+#   "SearchStart"
+#     Jump to the next start of a match to the left of the origin.
+#
+#   "SearchEnd"
+#     Jump to the next end of a match to the right of the origin.
+#
+#   "Open"
+#     Launch the URL below the vi mode cursor.
+#
+#   "CenterAroundViCursor"
+#     Centers the screen around the vi mode cursor.
+#
+#   "InlineSearchForward"
+#     Search forward within the current line.
+#
+#   "InlineSearchBcakward"
+#     Search backward within the current line.
+#
+#   "InlineSearchForwardShort"
+#     Search forward within the current line, stopping just short of the character.
+#
+#   "InlineSearchBackwardShort"
+#     Search backward within the current line, stopping just short of the character.
+#
+#   "InlineSearchNext"
+#     Jump to the next inline search match.
+#
+#   "InlineSearchPrevious"
+#     Jump to the previous inline search match.
+#
+#   Search actions:
+#
+#   "SearchFocusNext"
+#     Move the focus to the next search match.
+#
+#   "SearchFocusPrevious"
+#     Move the focus to the previous search match.
+#
+#   "SearchConfirm"
+#     Confirm the active search.
+#
+#   "SearchCancel"
+#     Cancel the active search.
+#
+#   "SearchClear"
+#     Reset the search regex.
+#
+#   "SearchDeleteWord"
+#     Delete the last word in the search regex.
+#
+#   "SearchHistoryPrevious"
+#     Go to the previous regex in the search history.
+#
+#   "SearchHistoryNext"
+#     Go to the next regex in the search history.
+#
+#   macOS exclusive:
+#
+#   "ToggleSimpleFullscreen"
+#     Enter fullscreen without occupying another space.
+#
+#   "HideOtherApplications"
+#     Hide all windows other than Alacritty.
+#
+#   "CreateNewTab"
+#     Create new window in a tab.
+#
+#   "SelectNextTab"
+#     Select next tab.
+#
+#   "SelectPreviousTab"
+#     Select previous tab.
+#
+#   "SelectTab1"
+#     Select the first tab.
+#
+#   "SelectTab2"
+#     Select the second tab.
+#
+#   "SelectTab3"
+#     Select the third tab.
+#
+#   "SelectTab4"
+#     Select the fourth tab.
+#
+#   "SelectTab5"
+#     Select the fifth tab.
+#
+#   "SelectTab6"
+#     Select the sixth tab.
+#
+#   "SelectTab7"
+#     Select the seventh tab.
+#
+#   "SelectTab8"
+#     Select the eighth tab.
+#
+#   "SelectTab9"
+#     Select the ninth tab.
+#
+#   "SelectLastTab"
+#     Select the last tab.
+#
+#   Linux/BSD exclusive:
+#
+#   "CopySelection"
+#     Copy from the selection buffer.
+#
+#   "PasteSelection"
+#     Paste from the selection buffer.
+#
+# Default: See [alacritty-bindings](https://alacritty.org/config-alacritty-bindings.html)
+#
+# Example:
+#   ```
+#   [keyboard]
+#   bindings = [
+#     { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+#     { key = "L", mods = "Control|Shift", chars = "l" },
+#   ]
+#   ```
+#
+# Schema: `[{ key = "<string>", mods = "<string>", mode = "<string>", action = "<action>" | "<chars>" },]`
+
+bindings = []
+
+########
+# DEBUG #
+########
+
+# This section documents the [debug] table of the configuration file.
+#
+# Debug options are meant to help troubleshoot issues with Alacritty. These can change or be removed entirely without warning, so their stability shouldn't be relied upon.
+
+[debug]
+
+# Display the time it takes to draw each frame.
+#
+# Default: false
+#
+# Schema: `true | false`
+
+render_timer = false
+
+# Keep the log file after quitting Alacritty.
+#
+# Default: false
+#
+# Schema: `true | false`
+
+persistent_logging = false
+
+# Default: "Warn"
+#
+# Schema: `"Off" | "Error" | "Warn" | "Info" | "Debug" | "Trace"`
+
+log_level = "Warn"
+
+# To add extra libraries to logging ALACRITTY_EXTRA_LOG_TARGETS variable can be used.
+#
+# Example:
+#   ALACRITTY_EXTRA_LOG_TARGETS="winit;vte" alacritty -vvv
+
+# Force use of a specific renderer, "None" will use the highest available one.
+#
+# Default: "None"
+#
+# Schema: `"glsl3" | "gles2" | "gles2_pure" | "None"`
+
+renderer = "None"
+
+# Log all received window events.
+#
+# Default: false
+#
+# Schema: `true | false`
+
+print_events = false
+
+# Highlight window damage information.
+#
+# Default: false
+#
+# Schema: `true | false`
+
+highlight_damage = false
+
+# Use EGL as display API if the current platform allows it. Note that transparency may not work with EGL on Linux/BSD.
+#
+# Default: false
+#
+# Schema: `true | false`
+
+prefer_egl = false
+
+
